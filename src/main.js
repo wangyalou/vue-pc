@@ -1,11 +1,17 @@
-import Vue from 'vue';
-import App from './App';
+// @ts-nocheck
+import Vue from "vue";
+import App from "./App";
+import router from "./router";
+import store from "./store";
+import "./plugins/element.js";
+import './mock/mockServer';
 
-import router from './router';
-import "./styles/reset.css"
-Vue.config.productionTip = false
+import "./styles/reset.css";
+
+Vue.config.productionTip = false;
 
 new Vue({
-  render: h => h(App),
-  router
-}).$mount('#app')
+  render: (h) => h(App),
+  router,
+  store,
+}).$mount("#app");
