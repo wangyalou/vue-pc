@@ -11,8 +11,9 @@ import { reqLogin } from "@api/user";
 export default {
   name: "Login",
   methods: {
+    // 测试登录
     login() {
-      reqLogin("wwwwww", "123456")
+      reqLogin("13700000000", "11111111")
         .then((res) => {
           console.log("res", res);
         })

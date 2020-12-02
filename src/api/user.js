@@ -1,6 +1,8 @@
 import request from "@utils/request";
 
+
 export const reqLogin = (phone, password) => {
+  
   return request({
     method: "POST",
     url: "/user/passport/login",
@@ -8,5 +10,6 @@ export const reqLogin = (phone, password) => {
       phone,
       password,
     },
+
   });
 };

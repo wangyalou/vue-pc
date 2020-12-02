@@ -22,12 +22,14 @@
               :key="category.categoryId"
             >
               <h3>
+                <!-- 一级分类名称 -->
                 <a
                   :data-categoryName="category.categoryName"
                   :data-categoryId="category.categoryId"
                   :data-categoryType="1"
-                  >{{ category.categoryName }}</a>
-               
+                  >{{ category.categoryName }}</a
+                >
+                
               </h3>
               <div class="item-list clearfix">
                 <div class="subitem">
@@ -36,7 +38,8 @@
                     v-for="child in category.categoryChild"
                     :key="child.categoryId"
                   >
-                    <dt>                     
+                    <dt>
+                      <!-- 二级分类名称 -->
                       <a
                         :data-categoryName="child.categoryName"
                         :data-categoryId="child.categoryId"
@@ -45,7 +48,7 @@
                       >
                     </dt>
                     <dd>
-                     
+                      <!-- 三级分类名称 -->
                       <em
                         v-for="grandChild in child.categoryChild"
                         :key="grandChild.categoryId"
@@ -54,7 +57,9 @@
                           :data-categoryName="grandChild.categoryName"
                           :data-categoryId="grandChild.categoryId"
                           :data-categoryType="3"
-                          >{{ grandChild.categoryName }}</a>
+                          >{{ grandChild.categoryName }}</a
+                        >
+                       
                       </em>
                     </dd>
                   </dl>
@@ -75,34 +80,43 @@ export default {
   name: "TypeNav",
   data() {
     return {
+     
       isHomeShow: this.$route.path === "/",
       isSearchShow: false,
     };
   },
   computed: {
-  
+    
+
     ...mapState({
+     
       categoryList: (state) => state.home.categoryList,
-      // testCount: (state) => state.testCount,
+      
     }),
   },
   methods: {
     
     ...mapActions(["getCategoryList"]),
-   
+    
     goSearch(e) {
+     
       const { categoryname, categoryid, categorytype } = e.target.dataset; 
+
+      
       if (!categoryname) return;
+
+     
       this.isSearchShow = false;
 
       const location = {
-        name: "search",
+        name: "search", 
         query: {
           categoryName: categoryname,
           [`category${categorytype}Id`]: categoryid,
         },
       };
 
+      
       const { searchText } = this.$route.params;
 
       if (searchText) {

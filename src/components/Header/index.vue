@@ -38,6 +38,7 @@
             class="input-error input-xxlarge"
             v-model="searchText"
           />
+          
           <button class="sui-btn btn-xlarge btn-danger">搜索</button>
         </form>
       </div>
@@ -50,32 +51,37 @@ export default {
   name: "Header",
   data() {
     return {
+      // 搜索的内容
       searchText: "",
     };
   },
   methods: {
-    
-
+   
     search() {
-    
-      const { searchText } = this;
      
+
+       
+        
+      const { searchText } = this;
+      
       const location = {
         name: "search", 
       };
+
       if (searchText) {
         location.params = {
           searchText,
         };
       }
+
       const { categoryName } = this.$route.query;
+
       if (categoryName) {
         location.query = this.$route.query;
       }
 
       this.$router.push(
         location
-       
       );
     },
   },
@@ -83,12 +89,15 @@ export default {
 </script>
 
 <style lang="less" scoped>
+
+
 .container {
   width: 1200px;
   margin: 0 auto;
   overflow: hidden;
   .loginList {
     float: left;
+
     p {
       float: left;
       margin-right: 10px;
